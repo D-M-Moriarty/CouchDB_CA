@@ -9,40 +9,39 @@ import javax.annotation.security.PermitAll;
 import java.util.List;
 
 @RestController
+@RequestMapping("users")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
-    public String getRoot() {
-        return "Root";
-    }
-
-    @GetMapping("/users")
+    @GetMapping("/all")
     public List<User> getAllUsers() {
         return userRepository.getAll();
     }
 
-    @GetMapping("/users/{_id}")
+    @GetMapping("/id={_id}")
     public User getUser(@PathVariable String _id) {
         return userRepository.get(_id);
     }
 
-    @PostMapping("/user")
+    @PostMapping("/")
     public User addUser(@RequestBody User user) {
-        System.out.println(user);
         userRepository.add(user);
         return user;
     }
 
-    @PutMapping("/users/{_id}")
-    public void updateUser(@PathVariable String _id) {
-        User user = userRepository.get(_id);
-        userRepository.update(user);
+    @GetMapping("/name={name}")
+    public List<User> updateUser(@PathVariable String name) {
+        return userRepository.findByName(name);
     }
 
-    @DeleteMapping("/users/{_id}")
+    @GetMapping("/get_name_cust")
+    public String updateUser() {
+        return userRepository.getNameCust();
+    }
+
+    @DeleteMapping("/{_id}")
     public void deleteUser(@PathVariable String _id) {
         User user = userRepository.get(_id);
         userRepository.remove(user);

@@ -17,7 +17,7 @@ public class User {
     private String revision;
     private String name;
     private URL image;
-    private Date createdAt;
+    private String createdAt;
     // TODO add user interests ass some list structure
 
     @JsonProperty("_id")
@@ -53,11 +53,11 @@ public class User {
         this.image = image;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
