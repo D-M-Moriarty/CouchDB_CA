@@ -3,6 +3,7 @@ package com.moriarty.couchdb_ca.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties({"id", "revision"})
+@Component
 public class User {
     @JsonProperty("_id")
     private String id;

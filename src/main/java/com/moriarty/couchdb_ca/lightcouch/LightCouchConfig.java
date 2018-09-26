@@ -1,4 +1,4 @@
-package com.moriarty.couchdb_ca.lighcouch;
+package com.moriarty.couchdb_ca.lightcouch;
 
 import com.google.gson.JsonObject;
 import org.lightcouch.*;

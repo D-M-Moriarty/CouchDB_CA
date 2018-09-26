@@ -13,7 +13,7 @@ public class Subreddit {
     private String revision;
     private String name;
     private String description;
-    private Date createdAt;
+    private String createdAt;
 
     @JsonProperty("_id")
     public String getId() {
@@ -48,11 +48,11 @@ public class Subreddit {
         this.description = description;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 }

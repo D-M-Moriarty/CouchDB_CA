@@ -50,6 +50,12 @@
             <version>0.2.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.ektorp/org.ektorp -->
         <dependency>
             <groupId>org.ektorp</groupId>

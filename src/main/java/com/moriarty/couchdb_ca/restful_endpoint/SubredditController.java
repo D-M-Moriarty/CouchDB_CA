@@ -15,7 +15,7 @@ public class SubredditController {
     @Autowired
     private SubredditRepository subredditRepository;
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Subreddit> getAllSubreddits() {
         return subredditRepository.getAll();
     }
