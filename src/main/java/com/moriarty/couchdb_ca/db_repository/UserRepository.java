@@ -2,6 +2,7 @@ package com.moriarty.couchdb_ca.db_repository;
 
 
 import com.moriarty.couchdb_ca.entity.User;
+import org.ektorp.Attachment;
 import org.ektorp.CouchDbConnector;
 import org.ektorp.ViewQuery;
 import org.ektorp.ViewResult;
@@ -12,6 +13,7 @@ import org.ektorp.support.Views;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -24,6 +26,9 @@ import java.util.List;
         })// class extends CouchDbRepositorySupport and then creates a
           // design document for the user class
 public class UserRepository extends CouchDbRepositorySupport<User> {
+
+    @Autowired
+    private User user;
 
     @Autowired
     public UserRepository(CouchDbConnector db) {
@@ -55,6 +60,13 @@ public class UserRepository extends CouchDbRepositorySupport<User> {
                 .descending(true)
                 .includeDocs(true);
         return db.queryView(q, User.class);
+    }
+
+    // TODO needs refinement
+    public void addUserProfilePicture(String base64EncodedData, String contentType, String name) {
+        user = db.get(User.class, "20e1ed2a41632e45ada34e3e57018a28");
+        user.setImage(base64EncodedData, contentType, name);
+        db.update(user);
     }
 }
 

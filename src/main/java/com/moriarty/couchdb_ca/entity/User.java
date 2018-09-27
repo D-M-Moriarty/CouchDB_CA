@@ -3,6 +3,8 @@ package com.moriarty.couchdb_ca.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.ektorp.Attachment;
+import org.ektorp.support.CouchDbDocument;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -10,15 +12,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@JsonIgnoreProperties({"id", "revision"})
+//@JsonIgnoreProperties({"id", "revision"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Component
-public class User {
+public class User extends CouchDbDocument {
     @JsonProperty("_id")
     private String id;
     @JsonProperty("_rev")
     private String revision;
     private String name;
-    private URL image;
+    private String image;
     private String createdAt;
     // TODO add user interests ass some list structure
     @JsonProperty("_id")
@@ -46,12 +49,14 @@ public class User {
         this.name = name;
     }
 
-    public URL getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(URL image) {
-        this.image = image;
+    public void setImage(String image, String contentType, String name) {
+        Attachment inline = new Attachment("theId", image, contentType);
+        addInlineAttachment(inline);
+        this.image = name;
     }
 
     public String getCreatedAt() {
