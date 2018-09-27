@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CommentRepository extends CouchDbRepositorySupport<Comment> {
-
     protected CommentRepository(CouchDbConnector db) {
         super(Comment.class, db);
     }

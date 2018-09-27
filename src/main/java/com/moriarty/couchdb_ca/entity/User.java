@@ -21,7 +21,6 @@ public class User {
     private URL image;
     private String createdAt;
     // TODO add user interests ass some list structure
-
     @JsonProperty("_id")
     public String getId() {
         return id;

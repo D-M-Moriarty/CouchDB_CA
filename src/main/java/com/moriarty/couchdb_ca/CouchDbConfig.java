@@ -33,6 +33,7 @@ public class CouchDbConfig {
         try {
             authenticatedHttpClient = new StdHttpClient.Builder()
                     .url(protocol + "://" + host + ":" + port)
+                    .caching(false)
                     .build();
         } catch (MalformedURLException e) {
             e.printStackTrace();

@@ -36,6 +36,11 @@ public class UserController {
         return userRepository.findByName(name);
     }
 
+    @GetMapping("/date={date}")
+    public List<User> getByDate(@PathVariable String date) {
+        return userRepository.findByCreatedAt(date);
+    }
+
     @GetMapping("/get_name_cust")
     public String updateUser() {
         return userRepository.getNameCust();
