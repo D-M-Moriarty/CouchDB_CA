@@ -4,6 +4,7 @@ import com.moriarty.couchdb_ca.entity.Post;
 import org.ektorp.CouchDbConnector;
 import org.ektorp.ViewQuery;
 import org.ektorp.support.CouchDbRepositorySupport;
+import org.ektorp.support.GenerateView;
 import org.ektorp.support.View;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,6 +31,11 @@ public class PostRepository extends CouchDbRepositorySupport<Post> {
                 .descending(true)
                 .includeDocs(true);
         return db.queryView(q, Post.class);
+    }
+
+    @GenerateView
+    public List<Post> findByTitle(String name) {
+        return queryView("by_title", name);
     }
 }
 

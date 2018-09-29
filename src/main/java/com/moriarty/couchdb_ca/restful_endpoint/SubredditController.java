@@ -9,36 +9,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping("r")
 public class SubredditController {
 
     @Autowired
     private SubredditRepository subredditRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Subreddit> getAllSubreddits() {
         return subredditRepository.getAll();
     }
 
-    @GetMapping("/id={_id}")
+    @GetMapping("/{id}")
     public Subreddit getUser(@PathVariable String _id) {
         return subredditRepository.get(_id);
     }
 
-    @PostMapping("/")
-    public Subreddit addUser(@RequestBody Subreddit user) {
-        subredditRepository.add(user);
-        return user;
+    @PostMapping("")
+    public Subreddit addSubreddit(@RequestBody Subreddit subreddit) {
+        subredditRepository.add(subreddit);
+        return subreddit;
     }
 
-    @GetMapping("/name={name}")
+    @GetMapping("/name/{name}")
     public List<Subreddit> updateUser(@PathVariable String name) {
         return subredditRepository.findByName(name);
     }
 
-    @DeleteMapping("/{_id}")
-    public void deleteUser(@PathVariable String _id) {
-        Subreddit subreddit = subredditRepository.get(_id);
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable String id) {
+        Subreddit subreddit = subredditRepository.get(id);
         subredditRepository.remove(subreddit);
     }
 }

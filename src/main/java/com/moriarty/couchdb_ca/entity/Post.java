@@ -2,24 +2,26 @@ package com.moriarty.couchdb_ca.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.Date;
 
-@JsonIgnoreProperties({"id", "revision"})
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Component
 public class Post {
     @JsonProperty("_id")
     private String id;
     @JsonProperty("_rev")
     private String revision;
-    private URL image;
+    private String image;
     private String title;
     private String description;
     private String url;
     private int userId;
     private int subredditId;
-    private Date createdAt;
-    private Date updatedAt;
+    private String createdAt;
+    private String updatedAt;
 
     @JsonProperty("_id")
     public String getId() {
@@ -38,11 +40,11 @@ public class Post {
         this.revision = revision;
     }
 
-    public URL getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(URL image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -86,19 +88,19 @@ public class Post {
         this.subredditId = subredditId;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 

@@ -2,10 +2,12 @@ package com.moriarty.couchdb_ca.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@JsonIgnoreProperties({"id", "revision"})
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Component
 public class CommentVote {
     @JsonProperty("_id")
     private String id;

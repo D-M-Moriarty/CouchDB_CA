@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@JsonIgnoreProperties({"id", "revision"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Component
 public class PostVote {
     @JsonProperty("_id")
